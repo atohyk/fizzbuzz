@@ -19,7 +19,6 @@ def opt1(n):
     for i in range(1,int(n/15)):
         retval += list(map(lambda x:x+i*15 if isinstance(x,int) else x,rep))
     retval += list(map(lambda x:x+(i+1)*15 if isinstance(x,int) else x,rep[:n%15]))
-
     return retval
 
 def opt2(n):
@@ -48,7 +47,6 @@ def opt4(n):
     return retval
 
 if __name__ == '__main__':
-    print('Testing for Correctness')
     print('basic(50):',basic(50)) # for manual verification
     a=basic(1000) # we know this to be true
     if a==opt1(1000):
