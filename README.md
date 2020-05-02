@@ -21,11 +21,13 @@ Opt1 correct.
 Opt2 correct.
 Opt3 correct.
 Opt4 correct.
+OptGen correct.
 Time taken for basic(10000):  0.1860354050004389
 Time taken for opt1(10000):  0.19396261300425977
 Time taken for Opt2(10000):  0.1783163729996886
 Time taken for opt3(10000):  0.1424795780039858
 Time taken for opt4(10000):  0.09713343801558949
+Time taken for optgen(10000):  0.14733543401234783
 ```
 
 # Basic Algorithm
@@ -128,5 +130,24 @@ def opt4(n):
 By using list comprehension, we save even more time!
 ```Score: 0.09713343801558949``` (lower is better)
 
+### Optimizing for Memory
+In order to prevent creating an entire list of **n** elements in memory, python has a useful tool called the **generator**. It works just like any other function, except that upon hitting the **yield** keyword, it will **save its current state**, and return a value. Upon **subsequent calls**, the **generator** continues from its **original saved state**.
+In order to iterate through a generator, we use ```list(myGenerator(myParam))```, or in our case, ```list(optgen(n))```.
+```sh
+def optgen(n):
+    rep = [1, 1, 'fizz', 1, 'buzz', 'fizz', 1, 1, 'fizz', 'buzz', 1, 'fizz', 1, 1, 'fizzbuzz']
+    counter = 0
+    while(counter != n):
+        if rep[counter%15]==1:
+            yield counter+1
+        else:
+            yield rep[counter%15]
+        counter+=1
+```
+```Score: 0.14733543401234783``` (lower is better)
+While it takes more time than the best in-memory solution, it still takes less time than the original basic implementation, and it definitely takes less memory than any of the other solutions, as it does not require the creation of a list with **n** elements in memory.
+
 # Summary
-As can be seen from the first iteration, an optimization in theory may not lead to a saving in reality, and there is a significant amount of overhead especially when working with an interpreted language such as Python. Overall, we managed to reduce the amount of time needed from ```0.186035``` to ```0.097133```, by taking advantage of the structure of the problem and improving the implementation.
+As can be seen from the first iteration, **an optimization in theory may not lead to a saving in reality**, and there is a significant amount of overhead especially when working with an interpreted language such as Python. Overall, we managed to reduce the amount of time needed from ```0.186035``` to ```0.097133```, by taking advantage of the structure of the problem and improving the implementation iteratively. As shown by the optgen example, there is normally always a **tradeoff between optimizing for time or memory**, and both are limited when dealing with large problems: https://en.wikipedia.org/wiki/Big_O_notation.
+
+Thanks for reading!

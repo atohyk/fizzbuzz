@@ -46,6 +46,16 @@ def opt4(n):
     retval = [i+1 if retval[i] == 1 else retval[i] for i in range(n) ]
     return retval
 
+def optgen(n):
+    rep = [1, 1, 'fizz', 1, 'buzz', 'fizz', 1, 1, 'fizz', 'buzz', 1, 'fizz', 1, 1, 'fizzbuzz']
+    counter = 0
+    while(counter != n):
+        if rep[counter%15]==1:
+            yield counter+1
+        else:
+            yield rep[counter%15]
+        counter+=1
+
 if __name__ == '__main__':
     print('basic(50):',basic(50)) # for manual verification
     a=basic(1000) # we know this to be true
@@ -57,9 +67,12 @@ if __name__ == '__main__':
         print('Opt3 correct.')
     if a==opt4(1000):
         print('Opt4 correct.')
+    if a==list(optgen(1000)):
+        print('OptGen correct.')
 
     print('Time taken for basic(10000): ', timeit.timeit(lambda: basic(10000), number=100))
     print('Time taken for opt1(10000): ', timeit.timeit(lambda: opt1(10000), number=100))
     print('Time taken for Opt2(10000): ', timeit.timeit(lambda: opt2(10000), number=100))
     print('Time taken for opt3(10000): ', timeit.timeit(lambda: opt3(10000), number=100))
     print('Time taken for opt4(10000): ', timeit.timeit(lambda: opt4(10000), number=100))
+    print('Time taken for optgen(10000): ', timeit.timeit(lambda: list(optgen(10000)), number=100))
