@@ -2,9 +2,9 @@
 An exploration of potential solutions and optimizations to the popular fizzbuzz problem in Python.
 
 # Introduction
-The fizzbuzz problem is a simple one - given a number **n**, return a list from **1 to n** where any number that is divisible by **3** is changd to **fizz** and any number that is divisible by **5** is changed to **buzz**. Any number that is divisible by **both 3 and 5** is changed to **fizzbuzz**.
+The fizzbuzz problem is a simple one - given a number **n**, return a list from **1 to n** where any number that is divisible by **3** is changed to **fizz** and any number that is divisible by **5** is changed to **buzz**. Any number that is divisible by **both 3 and 5** is changed to **fizzbuzz**.
 
-The goal is to write a function that takes in 1 argument, **n**, and returns a list of numbers and/or strings that correspond to the above rules.
+The goal is to write a function that takes in an argument, **n**, and returns a list of numbers and/or strings that correspond to the above rules.
 
 An example would be:
 >fizzbuzz(15) = [1, 2, 'fizz', 4, 'buzz', 'fizz', 7, 8, 'fizz', 'buzz', 11, 'fizz', 13, 14, 'fizzbuzz']
