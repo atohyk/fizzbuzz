@@ -151,3 +151,6 @@ While it takes more time than the best in-memory solution, it still takes less t
 As can be seen from the first iteration, **an optimization in theory may not lead to a saving in reality**, and there is a significant amount of overhead especially when working with an interpreted language such as Python. Overall, we managed to reduce the amount of time needed from ```0.186035``` to ```0.097133```, by taking advantage of the structure of the problem and improving the implementation iteratively. As shown by the optgen example, there is normally always a **tradeoff between optimizing for time or memory**, and both are limited when dealing with large problems: https://en.wikipedia.org/wiki/Big_O_notation.
 
 Thanks for reading!
+
+# Motivation
+This video: https://www.youtube.com/watch?v=QPZ0pIK_wsc turned up on my feed one day and it occurred to me that we could try to take advantage of the structure of the problem (the repeating of the first 15 elements). Although to be fair this question is more about the ability to code cleanly and express logic, rather than for optimization in computation or memory.
