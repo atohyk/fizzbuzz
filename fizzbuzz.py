@@ -46,7 +46,18 @@ def opt4(n):
     retval = [i+1 if retval[i] == 1 else retval[i] for i in range(n) ]
     return retval
 
-def optgen(n):
+def optgen1(n):
+    for i in range(1,n+1):
+        if (i % 3 == 0 and i % 5 == 0):
+            yield 'fizzbuzz'
+        elif (i % 3 == 0):
+            yield 'fizz'
+        elif (i % 5 == 0):
+            yield 'buzz'
+        else:
+            yield i
+
+def optgen2(n):
     rep = [1, 1, 'fizz', 1, 'buzz', 'fizz', 1, 1, 'fizz', 'buzz', 1, 'fizz', 1, 1, 'fizzbuzz']
     counter = 0
     while(counter != n):
@@ -67,12 +78,15 @@ if __name__ == '__main__':
         print('Opt3 correct.')
     if a==opt4(1000):
         print('Opt4 correct.')
-    if a==list(optgen(1000)):
-        print('OptGen correct.')
+    if a==list(optgen1(1000)):
+        print('OptGen1 correct.')
+    if a==list(optgen2(1000)):
+        print('OptGen2 correct.')
 
     print('Time taken for basic(10000): ', timeit.timeit(lambda: basic(10000), number=100))
     print('Time taken for opt1(10000): ', timeit.timeit(lambda: opt1(10000), number=100))
-    print('Time taken for Opt2(10000): ', timeit.timeit(lambda: opt2(10000), number=100))
+    print('Time taken for opt2(10000): ', timeit.timeit(lambda: opt2(10000), number=100))
     print('Time taken for opt3(10000): ', timeit.timeit(lambda: opt3(10000), number=100))
     print('Time taken for opt4(10000): ', timeit.timeit(lambda: opt4(10000), number=100))
-    print('Time taken for optgen(10000): ', timeit.timeit(lambda: list(optgen(10000)), number=100))
+    print('Time taken for optgen1(10000): ', timeit.timeit(lambda: list(optgen1(10000)), number=100))
+    print('Time taken for optgen2(10000): ', timeit.timeit(lambda: list(optgen2(10000)), number=100))
